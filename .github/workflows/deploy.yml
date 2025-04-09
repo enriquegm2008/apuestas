@@ -16,7 +16,11 @@ jobs:
       - name: Set up Google Cloud authentication
         uses: google-github-actions/auth@v0
         with:
-          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}  # Aquí se usa el secreto que creaste antes con las credenciales JSON
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}  # Aquí se usa el secreto con las credenciales JSON
+
+      - name: Install Firebase CLI
+        run: |
+          curl -sL https://firebase.tools | bash  # Instala Firebase CLI en el entorno de GitHub Actions
 
       - name: Deploy to Firebase Hosting
         run: |

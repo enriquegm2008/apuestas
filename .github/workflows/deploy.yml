@@ -3,25 +3,25 @@ name: Deploy to Firebase
 on:
   push:
     branches:
-      - main  # Esto significa que el flujo de trabajo se ejecutará cuando hagas un push a la rama principal
+      - master  # Esto indica que se ejecutará cuando haya un push a la rama 'master'
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Esto especifica que el flujo de trabajo se ejecutará en una máquina con Ubuntu
+    runs-on: ubuntu-latest  # El sistema operativo donde se ejecutará el flujo de trabajo
 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v2  # Este paso descarga tu código fuente para el flujo de trabajo
+        uses: actions/checkout@v2  # Paso para verificar el código de tu repositorio
 
       - name: Set up Google Cloud authentication
         uses: google-github-actions/auth@v0
         with:
-          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}  # Aquí se usa el secreto con las credenciales JSON
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}  # Aquí se agrega el secreto para autenticarse con Google Cloud
 
       - name: Install Firebase CLI
         run: |
-          curl -sL https://firebase.tools | bash  # Instala Firebase CLI en el entorno de GitHub Actions
+          curl -sL https://firebase.tools | bash  # Esto instala la Firebase CLI en el entorno
 
       - name: Deploy to Firebase Hosting
         run: |
-          firebase deploy --only hosting --token ${{ secrets.FIREBASE_AUTH_TOKEN }}  # Despliega a Firebase Hosting
+          firebase deploy --only hosting --token ${{ secrets.FIREBASE_AUTH_TOKEN }}  # Aquí usamos el token para autenticar el despliegue

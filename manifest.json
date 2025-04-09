@@ -1,0 +1,16 @@
+{
+    "name": "Aplicación de Apuestas",
+    "short_name": "Apuestas",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#4CAF50",
+    "theme_color": "#4CAF50",
+    "icons": [
+      {
+        "src": "icono.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
+  
